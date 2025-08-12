@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CultureQ - Interactive Story Book app</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="selection:bg-indigo-300 selection:text-indigo-900">
+
+<!-- Mobile menu - SidebarMenu -->
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="admin.html">Publisher</a></li>
+    	</ul>
+        </div>
+  </div>
+  
+    <div class="book-container">
+        
+        <div class="language-selector-container">
+            <select id="languageSelector" class="language-selector">
+                <option value="en">English</option>
+            </select>
+        </div>
+
+        <div id="pageContent" class="page-content">
+            </div>
+
+    <button id="playStopBtn">
+        <img id="playStopIcon" src="images/play-icon.png" alt="Play Audio">
+    </button>
+    
+    <div id="audioPlayerContainer" class="audio-player-container">
+    <audio id="audioPlayer" class="audio-player" controls></audio>
+</div>
+    
+        <div class="navigation-controls">
+            <button id="prevBtn" class="navigation-button">
+                &#8592; </button>
+            <button id="nextBtn" class="navigation-button">
+                &#8594; </button>
+        </div>
+
+        <div id="pageInfo" class="page-info">
+            Page <span id="currentPageNum">1</span> of <span id="totalPagesNum"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>// Data for each page: image, text, and audio file paths for multiple languages
+const bookData = [
+    {
+        image: 'images/crafty-crew/cover.jpg',
+        content: {
+            en: {
+                text: 'THE MISSING KIDS',
+                audio: 'audio/crafty-crew/title-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/crafty-crew/Page02.jpg',
+        content: {
+            en: {
+                text: 'Four cousins, Ellie, Taka, Takapari and Charlie, took a plane to an island to camp in the mountains. But it crashes! There are no survivors except the four kids.',
+                audio: 'audio/crafty-crew/Page02-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/crafty-crew/Page03.jpg',
+        content: {
+            en: {
+                text: 'They wander the island, surviving off coconuts until one night, they discover a cave.',
+                audio: 'audio/crafty-crew/Page03-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/crafty-crew/Page04.jpg',
+        content: {
+            en: {
+                text: 'Suddenly, a man appears, his name is Opposite. He seems nice, “Come inside for some warm food”.',
+                audio: 'audio/crafty-crew/Page04-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/crafty-crew/Page05-06.jpg',
+        content: {
+            en: {
+                text: 'But he traps them instead!! The kids cry for help... Nine nights passed, and no one came, until they heard a noise from outside. It sounded like a spaceship...',
+                audio: 'audio/crafty-crew/Page05-06-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/crafty-crew/Page07.jpg',
+        content: {
+            en: {
+                text: 'It’s Kylie ROBOT, their cousin!  She helps them escape. But Opposite wakes up from his sleep!',
+                audio: 'audio/crafty-crew/Page07-esv2-90p-bg-10p.wav.wav'
+            }
+        }
+    },
+    {
+        image: 'images/crafty-crew/Page08.jpg',
+        content: {
+            en: {
+                text: 'Opposite gets up and uses his ‘opposite’ powers and turns Kylie Robot’s head into her body and her body turns into her head.',
+                audio: 'audio/crafty-crew/Page08-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/crafty-crew/Page09-10.jpg',
+        content: {
+            en: {
+                text: 'Kylie Robot’s head turns into her body, and her body turns into her head.',
+                audio: 'audio/crafty-crew/Page09-10-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+        {
+        image: 'images/crafty-crew/Page11.jpg',
+        content: {
+            en: {
+                text: 'Kylie Robot is defeated and calls on her assistant, ANYONE!! Someone comes out from the shadows. It’s ANYONE. “I can be ANYONE, any TIME, any PLACE, any WHERE.”',
+                audio: 'audio/crafty-crew/Page11-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+        {
+        image: 'images/crafty-crew/Page12.jpeg',
+        content: {
+            en: {
+                text: 'He picks up a massive boulder and tries to crush Opposite, but Opposite dodges it. Opposite laughs maniacally, “hahahahaha”',
+                audio: 'audio/crafty-crew/Page12-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+        {
+        image: 'images/crafty-crew/Page13-14.jpg',
+        content: {
+            en: {
+                text: 'So ANYONE throws another boulder, but this time Opposite is too busy laughing and gets crushed. The kids cheer, “YAY, he’s gone!” As soon as he dies, Kylie Robot’s body and head switch back to normal.',
+                   audio: 'audio/crafty-crew/Page13-14-esv2-90p-bg-10p.wav'
+            }
+        },
+        backgroundMusic: 'audio/crafty-crew/SFX1.wav' // 🎵 And another here
+    },
+        {
+        image: 'images/crafty-crew/Page15.jpg',
+        content: {
+            en: {
+                text: 'Kylie Robot and ANYONE combine their powers and save the missing children and return them to Kaikohe safely.',
+                audio: 'audio/crafty-crew/Page15-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+            {
+        image: 'images/crafty-crew/lastpage.jpg',
+        content: {
+            en: {
+                text: '',
+                audio: ''
+            }
+        }
+    },
+];
+</script>
+
+</body>
+</html>

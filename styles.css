@@ -1,0 +1,649 @@
+/*
+================================================================================
+  GLOBAL STYLES AND IMPORTS
+================================================================================
+*/
+
+/* Custom font import for 'Inter' */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/*
+        ================================================================================
+          Starry Galaxy Sky Background CSS
+        ================================================================================
+        */
+
+        body {
+            /* Set body to take full viewport height and center content if desired */
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Hide scrollbars if stars extend beyond viewport */
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); /* Deep space background */
+        }
+
+        /* Container for the stars - this will hold the pseudo-elements */
+        .galaxy-background {
+            position: absolute;
+            justify-items: center;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+			overflow: auto;
+			padding-bottom: 100px;
+            /* Add a subtle nebula-like effect with a radial gradient */
+            background: radial-gradient(circle at center, rgba(30, 60, 90, 0.2) 0%, transparent 70%);
+        }
+
+        /* Pseudo-elements for stars - using multiple box-shadows to create many stars */
+        /* Small stars */
+        .galaxy-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 3px;
+            background: transparent; /* No background, just the shadows */
+            box-shadow:
+                /* Generate hundreds of small stars randomly placed */
+                10px 20px #FFF, 80px 150px #FFF, 120px 30px #FFF, 200px 80px #FFF, 250px 10px #FFF,
+                300px 120px #FFF, 350px 40px #FFF, 400px 180px #FFF, 450px 60px #FFF, 500px 90px #FFF,
+                550px 20px #FFF, 600px 130px #FFF, 650px 70px #FFF, 700px 200px #FFF, 750px 50px #FFF,
+                800px 100px #FFF, 850px 10px #FFF, 900px 140px #FFF, 950px 80px #FFF, 1000px 210px #FFF,
+                1050px 30px #FFF, 1100px 150px #FFF, 1150px 90px #FFF, 1200px 220px #FFF, 1250px 60px #FFF,
+                1300px 110px #FFF, 1350px 20px #FFF, 1400px 160px #FFF, 1450px 100px #FFF, 1500px 230px #FFF,
+                1550px 40px #FFF, 1600px 170px #FFF, 1650px 110px #FFF, 1700px 240px #FFF, 1750px 70px #FFF,
+                1800px 120px #FFF, 1850px 30px #FFF, 1900px 180px #FFF, 1950px 120px #FFF, 2000px 250px #FFF,
+                /* Adding more to cover larger screens and provide density */
+                50px 400px #FFF, 180px 500px #FFF, 230px 320px #FFF, 380px 480px #FFF, 420px 390px #FFF,
+                570px 550px #FFF, 610px 310px #FFF, 760px 450px #FFF, 800px 360px #FFF, 950px 520px #FFF,
+                1000px 330px #FFF, 1150px 490px #FFF, 1200px 400px #FFF, 1350px 570px #FFF, 1400px 380px #FFF,
+                1550px 540px #FFF, 1600px 450px #FFF, 1750px 600px #FFF, 1800px 410px #FFF, 1950px 580px #FFF,
+                /* Random Y positions for stars throughout the height */
+                10px 700px #FFF, 80px 850px #FFF, 120px 730px #FFF, 200px 980px #FFF, 250px 710px #FFF,
+                300px 820px #FFF, 350px 740px #FFF, 400px 980px #FFF, 450px 760px #FFF, 500px 890px #FFF,
+                550px 720px #FFF, 600px 830px #FFF, 650px 770px #FFF, 700px 900px #FFF, 750px 750px #FFF,
+                800px 800px #FFF, 850px 710px #FFF, 900px 840px #FFF, 950px 780px #FFF, 1000px 910px #FFF,
+                /* More random distribution */
+                100px 50px #DDD, 250px 100px #DDD, 400px 20px #DDD, 550px 150px #DDD, 700px 80px #DDD,
+                850px 190px #DDD, 1000px 10px #DDD, 1150px 120px #DDD, 1300px 50px #DDD, 1450px 170px #DDD,
+                1600px 90px #DDD, 1750px 200px #DDD, 1900px 30px #DDD,
+                50px 600px #DDD, 200px 700px #DDD, 350px 550px #DDD, 500px 750px #DDD, 650px 620px #DDD,
+                800px 800px #DDD, 950px 680px #DDD, 1100px 850px #DDD, 1250px 730px #DDD, 1400px 900px #DDD,
+                1550px 780px #DDD, 1700px 950px #DDD, 1850px 820px #DDD;
+
+            animation: twinkle 5s infinite alternate; /* Subtle twinkling animation */
+        }
+
+        /* Medium stars */
+        .galaxy-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 5px;
+            background: transparent;
+            box-shadow:
+                /* Fewer, slightly larger stars */
+                50px 250px #EEE, 180px 50px #EEE, 300px 280px #EEE, 450px 150px #EEE, 600px 320px #EEE,
+                750px 20px #EEE, 900px 350px #EEE, 1050px 100px #EEE, 1200px 380px #EEE, 1350px 250px #EEE,
+                1500px 400px #EEE, 1650px 50px #EEE, 1800px 420px #EEE, 1950px 200px #EEE,
+                /* More scattered medium stars */
+                100px 650px #EEE, 250px 450px #EEE, 400px 700px #EEE, 550px 500px #EEE, 700px 750px #EEE,
+                850px 600px #EEE, 1000px 800px #EEE, 1150px 650px #EEE, 1300px 850px #EEE, 1450px 700px #EEE,
+                1600px 900px #EEE, 1750px 750px #EEE, 1900px 950px #EEE;
+            animation: twinkle 7s infinite alternate; /* Slower twinkling */
+        }
+
+        /* Twinkling animation */
+        @keyframes twinkle {
+            0% { opacity: 0.8; }
+            50% { opacity: 0.2; }
+            100% { opacity: 0.8; }
+        }
+
+
+/*
+================================================================================
+  MAIN LAYOUT & CONTAINERS
+================================================================================
+*/
+
+.book-container {
+    background-color: #ffffff;
+    border-radius: 1.5rem; /* More rounded corners */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Stronger shadow */
+    max-width: 90vw; /* Max width responsive */
+    max-height: 90vh; /* Max height responsive */
+    width: 1200px; /* Base width */
+    height: 1000px; /* Base height */
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    position: relative; /* For absolute positioning of controls */
+    padding-bottom: 5rem; /* Add padding for bottom elements */
+}
+
+/*
+================================================================================
+  HEADER & NAVIGATION
+================================================================================
+*/
+
+.header {
+    background-color: #0073e6;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-white {
+    padding: 24px;
+    text-align: center;
+    color: #fff;
+}
+
+/*
+================================================================================
+  BOOK CARDS (Grid View)
+================================================================================
+*/
+
+/* Responsive grid for book cards */
+.book-grid {
+    display: grid;
+    gap: 24px; /* Space between cards */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 2fr)); /* Responsive grid columns for desktop */
+    max-width: 1200px; /* Max width for the grid container */
+    margin-top: 40px;
+    justify-items: center;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 600px) {
+    .book-grid {
+        grid-template-columns: 1fr; /* Stacks the cards into a single column */
+    }
+}
+
+/* Styling for the book cards */
+.book-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 12px; /* Rounded corners for cards */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 24px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit text color */
+    width: 100%; /* Full width on small screens */
+    max-width: 280px; /* Max width for larger screens */
+    min-height: 200px; /* Minimum height for consistent card size */
+}
+
+.book-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.book-image {
+    width: 120px; /* Fixed width for book cover images */
+    height: 120px; /* Fixed height for book cover images */
+    object-fit: cover; /* Ensure image covers the area, cropping if necessary */
+    border-radius: 8px; /* Rounded corners for images */
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.image-not-found .page-text {
+    /* Example: Make the text take full width if the image is hidden */
+    width: 100%;
+    height: 100%;
+    /* You might need to adjust other layout properties like flex-direction or grid-template-columns */
+}
+
+.book-title {
+    font-size: 1.25rem; /* Larger font for titles */
+    font-weight: 600; /* Semi-bold */
+    color: #2c5282; /* A nice blue color for titles */
+    margin-bottom: 8px;
+}
+
+.book-description {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/*
+================================================================================
+  PAGINATION CONTROLS
+================================================================================
+*/
+
+#paginationControls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#paginationControls button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+#paginationControls button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+
+/*
+================================================================================
+  PAGE CONTENT
+================================================================================
+*/
+
+.page-content {
+    flex-grow: 1; /* Allows content to take available space */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    text-align: center;
+    transition: opacity 0.5s ease-in-out; /* Smooth transition for page change */
+    opacity: 1;
+}
+
+.page-content.hidden {
+    opacity: 0;
+    pointer-events: none; /* Disable interaction when hidden */
+}
+
+.page-image {
+    max-width: 70%;
+    max-height: 50%; /*content height */
+    object-fit: contain; /* Ensures image fits without cropping */
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.page-title {
+    font-size: 1.125rem; /* Larger text */
+    line-height: 1.6;
+    color: #374151; /* Darker gray text */
+    padding: 1rem;
+    transition: color 0.3s ease; /* Smooth transition for text color */
+    cursor: text; /* Indicate it's editable */
+}
+
+.page-text {
+    font-size: 1.125rem; /* Larger text */
+    line-height: 1.6;
+    color: #374151; /* Darker gray text */
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    max-height: 30%; /* Text takes up to 30% of content height */
+    transition: color 0.3s ease; /* Smooth transition for text color */
+    cursor: text; /* Indicate it's editable */
+}
+
+/* Style for editable text when focused */
+.page-text[contenteditable="true"]:focus {
+    outline: 2px solid #007bff; /* Blue outline on focus */
+    background-color: #e9f7ff; /* Light blue background on focus */
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.page-text.highlighted-text {
+    color: #ef4444; /* Red color for highlighting */
+    font-weight: 600; /* Make text bolder when highlighted */
+}
+
+.page-info {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.875rem;
+    color: #6b7280;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/*
+================================================================================
+  AUDIO & NAVIGATION CONTROLS
+================================================================================
+*/
+
+.audio-player-container {
+    position: absolute;
+    bottom: -5rem; /* Position above navigation buttons */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    padding: 0 2rem;
+}
+
+.audio-player-container-1 {
+    position: absolute;
+    bottom: 5rem; /* Position above navigation buttons */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    padding: 0 2rem;
+}
+
+.audio-player {
+    width: 50%;
+    max-width: 400px; /* Limit audio player width */
+}
+
+#playStopBtn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    bottom: 8px;
+    left: 20%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
+#playStopIcon {
+    width: 80px; /* Adjust size as needed */
+    height: 80px; /* Adjust size as needed */
+    display: block;
+}
+
+.navigation-controls {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.navigation-button {
+    background-color: #3b5e6682; /* Indigo */
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 9999px; /* Fully rounded buttons */
+    cursor: pointer;
+    font-size: 1.5rem; /* Larger arrow icons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.navigation-button:hover {
+    background-color: #1f3237; /* Darker indigo on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.navigation-button:disabled {
+    background-color: #9ca3af; /* Gray for disabled */
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.language-selector-container {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 7rem;
+    z-index: 10; /* Ensure it's above other content */
+}
+
+.language-selector {
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5db; /* Light gray border */
+    background-color: #f9fafb; /* Off-white background */
+    color: #374151; /* Darker gray text */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.language-selector:focus {
+    outline: none;
+    border-color: #6366f1; /* Indigo focus ring */
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3); /* Soft focus shadow */
+}
+
+/*
+================================================================================
+  SLIDE MENU
+================================================================================
+*/
+
+.main {
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+    margin-top: 60px;
+}
+
+.mainInner {
+    display: table;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.mainInner div {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 1.25px;
+}
+
+#sidebarMenu {
+    padding-top: 60px;
+    z-index: 1;
+    height: 100%;
+    top: 0px;
+    position: fixed;
+    left: 0;
+    width: 250px;
+    transform: translateX(-250px);
+    transition: transform 250ms ease-in-out;
+    background: linear-gradient(180deg, #3b5e66 0%, #14130f 100%);
+}
+
+.sidebarMenuInner {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.sidebarMenuInner li {
+    list-style: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 20px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.sidebarMenuInner li span {
+    display: block;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.50);
+}
+
+.sidebarMenuInner li a {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+input[type="checkbox"]:checked ~ #sidebarMenu {
+    transform: translateX(0);
+}
+
+input[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+}
+
+.sidebarIconToggle {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: fixed;
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    top: 20px;
+    left: 15px;
+    height: 22px;
+    width: 22px;
+}
+
+.spinner {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+}
+
+.horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+}
+
+.diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -9px;
+}
+
+/*
+================================================================================
+  MEDIA QUERIES (RESPONSIVE)
+================================================================================
+*/
+
+/* Adjustments for very small screens */
+@media (max-width: 400px) {
+    .book-card {
+        padding: 16px;
+    }
+
+    .book-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .book-title {
+        font-size: 1.1rem;
+    }
+
+    .book-description {
+        font-size: 0.85rem;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .book-container {
+        width: 95vw;
+        padding: 1rem;
+        padding-bottom: 8rem; /* More padding for mobile buttons */
+    }
+
+    .page-content {
+        padding: 1rem;
+    }
+
+    .page-image {
+        max-height: 40%; /* Adjust image height for smaller screens */
+        margin-bottom: 1rem;
+    }
+
+    .page-text {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        max-height: 35%; /* Adjust text height */
+    }
+
+    .navigation-button {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+    }
+
+    .audio-player-container {
+        bottom: 6rem; /* Adjust for mobile */
+    }
+
+    .navigation-controls {
+        padding: 0 1rem; /* Less padding on small screens */
+    }
+
+    .language-selector-container {
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+}

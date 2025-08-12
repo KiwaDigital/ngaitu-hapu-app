@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CultureQ - Interactive Story Book app</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body class="selection:bg-indigo-300 selection:text-indigo-900">
+
+<!-- Mobile menu - SidebarMenu -->
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="admin.html">Publisher</a></li>
+    	</ul>
+        </div>
+  </div>
+  
+    <div class="book-container">
+        
+        <div class="language-selector-container">
+            <select id="languageSelector" class="language-selector">
+                <option value="en">English</option>
+            </select>
+        </div>
+
+        <div id="pageContent" class="page-content">
+            </div>
+            
+    <button id="playStopBtn">
+        <img id="playStopIcon" src="images/play-icon.png" alt="Play Audio">
+    </button>
+    
+            <!-- Audio player container -->
+        <div id="audioPlayerContainer-1" class="audio-player-container-1">
+            <audio id="audioPlayer" class="audio-player" controls></audio>
+        </div>
+    
+        <div class="navigation-controls">
+            <button id="prevBtn" class="navigation-button">
+                &#8592; </button>
+            <button id="nextBtn" class="navigation-button">
+                &#8594; </button>
+        </div>
+
+        <div id="pageInfo" class="page-info">
+            Page <span id="currentPageNum">1</span> of <span id="totalPagesNum"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>// Data for each page: image, text, and audio file paths for multiple languages
+const bookData = [
+    {
+        image: 'nil',
+        title: {
+            en: '1. Life on the Land – 1800s', // English title
+            mi: 'Te Oranga i Te Whenua – Ngā Tau 1800', // Māori title (example)
+        },
+        content: {
+            en: {
+                text: 'A long time ago, before Manurewa was called Manurewa, the land belonged to Waiohua iwi, especially Ngāti Te Ata and Te Ākitai Waiohua. Their people had lived here for hundreds of years. They were deeply connected to the maunga, rivers, wetlands, and the sea. The whenua gave them food, shelter, and a place to live and grow. But in 1836, a missionary named William Fairburn made a huge land deal. He said it was to bring peace, but really, he claimed more than 80,000 acres of land, including Manurewa, Papakura, Ōtāhuhu, and Howick. Many Māori thought they were agreeing to peace—not giving away their land. In 1842, the government admitted the deal was far too big and took back some of the land which they kept and made into smaller land blocks for European settlers. In 1853, James Reddy Clendon was given 10,000 acres of this land in Manurewa and Clendon by the government as payment for land he gave up in Russell (Ōkiato), New Zealand’s first capital. The Crown gave him this land without asking mana whenua. He later sold it to make money, including selling 2,000 acres to the Martin brothers, who subdivided the land in the mid-1900s.This was the continuation of Māori being pushed off their own whenua and left out of land decisions.',
+                audio: 'audio/chapter_1_en.mp3'
+            }
+        }
+    },
+    {
+        image: 'nil',
+        title: {
+            en: '2. Farms, Roads, and Settlers – Late 1800s to 1940s', // English title
+            mi: 'Te Oranga i Te Whenua – Ngā Tau 1800', // Māori title (example)
+        },
+        content: {
+            en: {
+                text: 'In the late 1800s, more settlers came to Manurewa. One was Henry Brown, who came from Nottingham, England. In 1882, he bought 257 acres of farmland and named it Littlefields, after his hometown. His farm was where Browns Road is today—named after him. He was known for using new farming tools like seed drills and ploughs. During this time, the government passed laws like the Public Works Act and the New Zealand Settlements Act, which let the government take Māori land for roads, railways, and towns—even when Māori didn’t agree. The Native Land Court broke up Māori land into smaller pieces, making it easier for settlers to buy. Many Māori lost their land because of unfair deals, debt, and pressure. Soon, farms, railways, and roads covered the area. Browns Road changed from a farm track into a busy street. By the 1940s, most of the land that Māori had lived on for generations was gone. Māori were pushed out and left out of decisions about how the land was used.',
+                audio: 'audio/chapter_2_en.mp3'
+            }
+        }
+    },
+	{
+        image: 'nil',
+        title: {
+            en: '3. State Housing and Big Changes – 1950s to 1990s', // English title
+            mi: 'Te Oranga i Te Whenua – Ngā Tau 1800', // Māori title (example)
+        },
+        content: {
+            en: {
+                text: 'In the 1950s, the government made big changes to Manurewa. They built lots of state houses for soldiers coming home from war and workers moving into Auckland. Places like Clendon, Homai, and Wiri grew very quickly. The government also took land for public buildings. One block of land was the Smyth family farm, which was bought from the Crown. This land had originally been taken from mana whenua as part of the Fairburn Purchase overreach. Even though the Crown admitted that deal was too big, they didn’t give the land back. Instead, they sold it to settlers like John Smyth who later sold it others including to The Education Board. In 1955, Manurewa North School opened. It later name Browns Road School then finally Homai Primary School. In 1965, the Homai Blind Institute was built on this land. The term Homai referred to a gift of land given by local resident John Dreadon to build a railway track in the area. Māori had no say in where roads, houses, and schools were built. Many Māori whānau, already pushed off rural land, were moved into these state houses. But they were given no support to keep their reo, tikanga, or connections to their whenua. Browns Road, once just a farm track, became a main road. By the 1990s, both Ngāti Te Ata and Te Ākitai Waiohua had lodged Treaty claims (Wai 366 and Wai 675). They were fighting for the return of their land and for the Crown to recognise the unfair way it was taken. These claims showed how Crown decisions had damaged their communities for generations.',
+                audio: 'audio/chapter_3_en.mp3'
+            }
+        }
+    },
+    {
+        image: 'nil',
+        title: {
+            en: '4. A Dream for a Kura – 1990s to 2005', // English title
+            mi: 'Te Oranga i Te Whenua – Ngā Tau 1800', // Māori title (example)
+        },
+        content: {
+            en: {
+                text: 'In the 1990s, whānau in Manurewa had a dream. They wanted a kura kaupapa Māori where tamariki could learn in te reo Māori, follow kaupapa Māori, and grow strong in their identity. There were kōhanga reo, but no kura for tamariki to continue their reo journey. The Ministry of Education made it difficult. Their rules didn’t fit Māori ways. But leaders like Whaea Waitangi, Whaea Mōri,, Nanny Hoana, Nanny Kiri, Matua Maahia, and Alan Johnson didn’t give up. They worked hard — writing the kura charter, filling out paperwork, holding hui after hui, and going back and forward with the Ministry. It was not an easy path, but their commitment to the reo and to the future of their tamariki kept them going. In 2005, Te Kura Kaupapa Māori o Manurewa finally opened. Prior to this, it started in old, borrowed buildings, with whānau doing the cleaning, painting, fundraising, and helping run the kura. This kura was more than just a school. It was a place where te reo, tikanga, and whakapapa were part of daily life. As Whaea Kim Herewini said, “We just wanted our kids to start in the reo.” As Whaea Dora McLeod remembered, “I didn’t come in thinking I was going to be a kaiako. I just started helping... then next thing I was enrolled in teacher training and became Tumuaki.” And as past tauira Miriama Wilson said, “It was a kura where you weren’t just learning the language—you were learning who you were, where you came from, and who you stand for.”',
+                audio: 'audio/chapter_4_en.mp3'
+            }
+        }
+    },
+    {
+        image: 'nil',
+        title: {
+            en: '5. Fighting for a Wharekura – 1999 to 2016', // English title
+            mi: 'Te Oranga i Te Whenua – Ngā Tau 1800', // Māori title (example)
+        },
+        content: {
+            en: {
+                text: 'Not long after the kura opened, whānau saw another problem. When tamariki finished Year 8, there was no Māori secondary school for them. Without a wharekura, many ended up in English-medium schools and slowly lost their reo. From 1999, whānau asked the Ministry of Education for a wharekura. The Ministry said no, claiming there were already “enough schools” in Manurewa. But none were Māori schools. Leaders like Matua Maahia, Whaea Waitangi, and Whaea Mōri didn’t give up. They gathered evidence, wrote proposals, and showed the need. They looked to other wharekura in Auckland and Northland for inspiration. The first classes for the wharekura were held in a Pākehā PTE (Private Training Establishment) in Manurewa. Later, it moved into a Māori PTE in Manurewa, but space was still very limited. After that, the wharekura shifted into the caretaker’s house at James Cook High School for a time. Eventually, in 2011, Te Wharekura o Manurewa opened in prefabs behind Manurewa Marae, starting with just 16 tauira and one kaiako. It was tough — one teacher had to teach everything, and whānau helped with kai, transport, and everything else. By 2016, both kura agreed it was time to push for a proper campus to bring the kura and wharekura together. As Matua Maahia Nathan said, “It was never about waiting for permission. It was about doing what our people needed. If we didn’t do it, who would?” And as Matua Lawrence Mane said, “Ko Manurewa taku kāinga. Kāore he kura tua atu i a Manurewa.” (“Manurewa is my home. There is no kura greater than Manurewa.”)',
+                audio: 'audio/chapter_5_en.mp3'
+            }
+        }
+    },
+    {
+        image: 'nil',
+        title: {
+            en: '6. Building Te Pūtahi Māori o Manurewa – 2017 to 2024', // English title
+            mi: 'Te Oranga i Te Whenua – Ngā Tau 1800', // Māori title (example)
+        },
+        content: {
+            en: {
+                text: 'The dream of having the kura and wharekura together on one site wasn’t just about buildings. It was about creating a place where tamariki could go from kōhanga, to kura, to wharekura, and one day even a wānanga, all on one whenua. In 2017, the National Government gave $24 million to start the build. But that wasn’t enough for two schools. The Ministry of Education argued for more funding, and in 2021, the Labour Government added another $18.9 million. A combined board was set up to lead both kura. Māori designers from mana whenua, architects, builders, and landscapers worked on the project. On 5 July 2024, Te Pūtahi Māori o Manurewa officially opened. The campus has a big gym, open learning spaces, and classrooms built for kaupapa Māori learning, under the cloak of Te Aho Matua. But it wasn’t just about bricks and walls. It was about Māori taking charge of their education, their futures, and their place of learning. As Whaea Daphne Mika (Tumuaki of the kura) said, “This whare is more than a school. It’s the result of every battle our people have fought to keep our reo, our tikanga, and our identity alive in Manurewa.” And as Matua Maahia Nathan (Tumuaki of the wharekura) shared, “Harikoa noa atu i te āhuatanga o te tini o te iwi te haere mai ki te tautoko i tā tātou kaupapa – ehara i te mea nā te tangata kotahi, kahore.” (“I’m beyond happy to see the masses here in support of this kaupapa – this was never a single person’s effort, no.”)',
+                audio: 'audio/chapter_6_en.mp3'
+            }
+        }
+    },
+    {
+        image: 'nil',
+        title: {
+            en: '7. The Future – Carrying the Legacy (2024 and Beyond)', // English title
+            mi: 'Te Oranga i Te Whenua – Ngā Tau 1800', // Māori title (example)
+        },
+        content: {
+            en: {
+                text: 'Today, Te Pūtahi Māori o Manurewa is more than just a kura. It is a symbol of Māori strength, leadership, and tino rangatiratanga. It brings together Te Kura Kaupapa Māori o Manurewa and Te Wharekura o Manurewa on one beautiful campus, designed for Māori, by Māori. But the dream doesn’t stop here. The next goal is to add a kōhanga reo and a wānanga, so tamariki can learn from pēpi to adulthood, all within kaupapa Māori. Whānau want tamariki to learn not just te reo and tikanga, but also things like science, technology, and trades—all through a Māori lens. They also want the campus to support whānau with hauora, counselling, and other services based on Māori values. The story of Te Pūtahi Māori o Manurewa also sits alongside the Treaty settlement journey of Ngāti Te Ata and Te Ākitai Waiohua, whose long fight for the return of whenua and recognition of mana whenua continues today. To conclude, the goal is simple: grow tamariki who are proud to be Māori, strong in te reo, and ready to lead in both te ao Māori and te ao whānui. As Pania Wilson said, “This was always about more than buildings. It was about proving that our people deserve the very best—not the leftovers, not second best—the best.”',
+                audio: 'audio/chapter_7_en.mp3'
+            }
+        }
+    }
+];
+</script>
+
+</body>
+</html>

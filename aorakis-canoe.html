@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CultureQ - Interactive Story Book app</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body class="selection:bg-indigo-300 selection:text-indigo-900">
+
+<!-- Mobile menu - SidebarMenu -->
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="admin.html">Publisher</a></li>
+    	</ul>
+        </div>
+  </div>
+  
+    <div class="book-container">
+        
+        <div class="language-selector-container">
+            <select id="languageSelector" class="language-selector">
+                <option value="en">English</option>
+                <option value="mi">Maori</option>
+            </select>
+        </div>
+
+        <div id="pageContent" class="page-content">
+            </div>
+
+    <button id="playStopBtn">
+        <img id="playStopIcon" src="images/play-icon.png" alt="Play Audio">
+    </button>
+    
+    <div id="audioPlayerContainer" class="audio-player-container">
+    <audio id="audioPlayer" class="audio-player" controls></audio>
+</div>
+    
+        <div class="navigation-controls">
+            <button id="prevBtn" class="navigation-button">
+                &#8592; </button>
+            <button id="nextBtn" class="navigation-button">
+                &#8594; </button>
+        </div>
+
+        <div id="pageInfo" class="page-info">
+            Page <span id="currentPageNum">1</span> of <span id="totalPagesNum"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Data for each page: image, text, and audio file paths for multiple languages
+        const bookData = [
+            {
+                image: 'images/NT0001_page_0001@2x.jpg',
+                content: {
+                    en: {
+                        text: 'Aoraki’s Canoe',
+                        audio: 'audio/page_0001.wav'
+                    },
+                    mi: {
+                        text: 'Te Waka o Aoraki',
+                        audio: 'audio/page_0001_mi.wav' // Māori audio
+                    }
+                }
+            },
+            {
+                image: 'images/NT0001_page_0002@2x.jpg',
+                content: {
+                    en: {
+                        text: 'From within The Darkness began the incantations of God.',
+                        audio: 'audio/page_0002.wav'
+                    },
+                    mi: {
+                        text: 'Kei a Te Pō te tīmatanga mai o te waiatatanga mai o te Atua.',
+                        audio: 'audio/page_0002_mi.wav' // Māori audio
+                    }
+                }
+            },
+            {
+                image: 'images/NT0001_page_0003@2x.jpg',
+                content: {
+                    en: {
+                        text: 'From The Darkness came The Dim Glow. From the Dim Glow came The Soft Light. From the Soft Light came The Enduring Light. From The Enduring Light came that Where Nothing is Bound, from whom came that Where Nothing is Swathed, from whom came that Where Nothing is Fastened, from whom came The Parentless One, from whom came The Vapour.',
+                        audio: 'audio/page_0003.wav' // Māori audio
+                    },
+                    mi: {
+                        text: 'Nā Te Pō ko Te Ao. Nā Te Ao ko Te Ao Mārama. Nā Te Ao Mārama ko Te Ao Tūroa. Nā Te Ao Tūroa ko Te Kore-te-Whiwhia. Nā Te Kore-te-Whiwhia ko Te Kore-te-Rawea. Nā Te Kore-te-Rawea ko Te Kore-te-Tāmāua. Nā Te Kore-te-Tāmāua ko Te Kore-te-Matua. Nā Te Kore-te-Matua ko Te Mākū.',
+                        audio: 'audio/page_0003_mi.wav' // Māori audio
+                    }
+                }
+            },
+            {
+                image: 'images/NT0001_page_0004@2x.jpg',
+                content: {
+                    en: {
+                        text: 'The Vapour lay with The Great Expanse and Raki was born. In time, Raki lay with Pokoharuatepō and together they had children. Their names were Aoraki, Rakiroa, Rarakiroa and Rakirua. All of them were male.',
+                        audio: 'audio/page_0004.wav'
+                    },
+                    mi: {
+                        text: 'Ka moe a Te Mākū i a Mahora-nui-ātea, ka puta ki waho ko Raki. Nāwai rā, ka moe a Raki i a Pokoharuatepō, ka whānau mai ā rāua tamariki. Ko Aoraki, ko Rakiroa, ko Rarakiroa, ko Rakirua ō rātou ingoa. He tāne te katoa.',
+                        audio: 'audio/page_0004_mi.wav' // Māori audio
+                    }
+                }
+            },
+            {
+                image: 'images/NT0001_page_0005@2x.jpg',
+                content: {
+                    en: {
+                        text: 'It was at that time, that Tangaroa and Papatūānuku were together. Then one day, while Tangaroa was away, Raki came to be with Papatūānuku.',
+                        audio: 'audio/page_0005.wav'
+                    },
+                    mi: {
+                        text: 'I taua wā, ka moea e Tangaroa a Papatūānuku. Inātahi rā, i a Tangaroa kāhore i te kāinga, ka heke iho a Raki ka moea a Papatūānuku.',
+                        audio: 'audio/page_0005_mi.wav' // Māori audio
+                    }
+                }
+            }
+        ];</script>
+
+</body>
+</html>

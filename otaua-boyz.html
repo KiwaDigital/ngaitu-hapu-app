@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CultureQ - Interactive Story Book app</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="selection:bg-indigo-300 selection:text-indigo-900">
+
+<!-- Mobile menu - SidebarMenu -->
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="admin.html">Publisher</a></li>
+    	</ul>
+        </div>
+  </div>
+  
+    <div class="book-container">
+        
+        <div class="language-selector-container">
+            <select id="languageSelector" class="language-selector">
+                <option value="en">English</option>
+            </select>
+        </div>
+
+        <div id="pageContent" class="page-content">
+            </div>
+
+    <button id="playStopBtn">
+        <img id="playStopIcon" src="images/play-icon.png" alt="Play Audio">
+    </button>
+    
+    <div id="audioPlayerContainer" class="audio-player-container">
+    <audio id="audioPlayer" class="audio-player" controls></audio>
+</div>
+    
+        <div class="navigation-controls">
+            <button id="prevBtn" class="navigation-button">
+                &#8592; </button>
+            <button id="nextBtn" class="navigation-button">
+                &#8594; </button>
+        </div>
+
+        <div id="pageInfo" class="page-info">
+            Page <span id="currentPageNum">1</span> of <span id="totalPagesNum"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>// Data for each page: image, text, and audio file paths for multiple languages
+const bookData = [
+    {
+        image: 'images/noho/tuparapara.png',
+        content: {
+            en: {
+                text: 'Tuparapara',
+                audio: 'audio/noho/tauparapara.wav'
+            }
+        }
+    },
+        {
+        image: 'images/noho/cover.png',
+        content: {
+            en: {
+                text: 'Noho Whenua',
+                audio: 'audio/noho/cover.wav'
+            }
+        }
+    },
+    {
+        image: 'images/noho/Page01.jpeg',
+        content: {
+            en: {
+                text: 'In May, 2025 Ngāi Tūteauru, a hapu in Ōtaua began peacefully occupying the whenua, Block Kohatutaka 6a pt on Ninihi Road.',
+                audio: 'audio/noho/Page01.wav'
+            }
+        }
+    },
+    {
+        image: 'images/noho/Page02.jpeg',
+        content: {
+            en: {
+                text: 'Te whakapapa o Ngāi Tūteauru: Ko toku maunga ko Pūhanga Tohorā Ko toku marae ko Pukurata. Ko toku awa ko Mangatawa. Ko toku iwi ko Ngāpuhi. Ko toku hapu ko Ngāi Tūteauru. Ko toku waka ko Ngātokimatawhaorua.',
+                audio: 'audio/noho/Page02.wav'
+            }
+        }
+    },
+    {
+        image: 'images/noho/Page03.jpeg',
+        content: {
+            en: {
+                text: 'The Waaka whānau were the leaseholders of the land, but the lease became too expensive. When the leaseholders left the land, the goverment (LINZ) started demolishing the houses.',
+                audio: 'audio/noho/Page03.wav'
+            }
+        }
+    },
+    {
+        image: 'images/noho/Page04.png',
+        content: {
+            en: {
+                text: 'When the whānau saw what was happening to their kainga and their whenua, they activated a noho whenua, and the ahi kā was lit. Uncle Marcus is one of the leaders. He makes sure the people stay tau.',
+                audio: 'audio/noho/Page04.wav'
+            }
+        }
+    },
+    {
+        image: 'images/noho/Page05.jpeg',
+        content: {
+            en: {
+                text: 'The rules of the noho whenua: The return of the whenua. Kia tau te rangimarie. No drugs and alcohol.',
+                audio: 'audio/noho/Page05.wav'
+            }
+        }
+    },
+    {
+        image: 'images/noho/Page06.jpeg',
+        content: {
+            en: {
+                text: 'At the noho whenua it is peaceful. The kids play on hay bales, the men keep the fire burning, and the cooks make the kai for the whānau.',
+                audio: 'audio/noho/Page06.wav'
+            }
+        }
+    },
+    {
+        image: 'images/noho/Page07.jpeg',
+        content: {
+            en: {
+                text: 'The noho whenua will end when the land is returned. LAND BACK!Until then, the ahi ka will continue to burn...',
+                audio: 'audio/noho/Page07.wav'
+            }
+        }
+    }
+];
+</script>
+
+</body>
+</html>

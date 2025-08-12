@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Selection Menu</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for Inter font and general body layout */
+        body {
+            font-family: "Inter", sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensure the body takes full viewport height */
+            background-color: #181924; /* Light background for the page */
+            color: #333;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Styling for the book cards */
+        .book-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 12px; /* Rounded corners for cards */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 24px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            text-decoration: none; /* Remove underline from links */
+            color: inherit; /* Inherit text color */
+            width: 100%; /* Full width on small screens */
+            max-width: 280px; /* Max width for larger screens */
+            min-height: 200px; /* Minimum height for consistent card size */
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+        }
+
+        .book-image {
+            width: 120px; /* Fixed width for book cover images */
+            height: 120px; /* Fixed height for book cover images */
+            object-fit: cover; /* Ensure image covers the area, cropping if necessary */
+            border-radius: 8px; /* Rounded corners for images */
+            margin-bottom: 16px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-title {
+            font-size: 1.25rem; /* Larger font for titles */
+            font-weight: 600; /* Semi-bold */
+            color: #2c5282; /* A nice blue color for titles */
+            margin-bottom: 8px;
+        }
+
+        .book-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Responsive grid for book cards */
+        .book-grid {
+            display: grid;
+            gap: 24px; /* Space between cards */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid columns */
+            /*width: 100%;*/
+            max-width: 1200px; /* Max width for the grid container */
+            margin-top: 40px;
+        }
+
+        /* Adjustments for very small screens */
+        @media (max-width: 400px) {
+            .book-card {
+                padding: 16px;
+            }
+            .book-image {
+                width: 100px;
+                height: 100px;
+            }
+            .book-title {
+                font-size: 1.1rem;
+            }
+            .book-description {
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* Slide menu */
+
+.header {
+    background-color: #0073e6;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main {
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+    margin-top: 60px;
+}
+.mainInner{
+    display: table;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.mainInner div{
+    display:table-cell;
+    vertical-align: middle;
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 1.25px;
+}
+#sidebarMenu {
+    padding-top: 60px;
+    z-index: 1;
+    height: 100%;
+    top: 0px;
+    position: fixed;
+    left: 0;
+    width: 250px;
+    transform: translateX(-250px);
+    transition: transform 250ms ease-in-out;
+    background: linear-gradient(180deg, #3b5e66 0%, #14130f 100%);
+}
+.sidebarMenuInner{
+    margin:0;
+    padding:0;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+.sidebarMenuInner li{
+    list-style: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 20px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+.sidebarMenuInner li span{
+    display: block;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.50);
+}
+.sidebarMenuInner li a{
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+input[type="checkbox"]:checked ~ #sidebarMenu {
+    transform: translateX(0);
+}
+input[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+}
+.sidebarIconToggle {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: fixed;
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    top: 20px;
+    left: 15px;
+    height: 22px;
+    width: 22px;
+}
+.spinner {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+}
+.horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+}
+.diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -9px;
+}
+
+        #paginationControls {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #paginationControls button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        #paginationControls button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+    </style>
+</head>
+<!-- Mobile menu - SidebarMenu -->
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="admin.html">Publisher</a></li>
+    	</ul>
+        </div>
+  </div>
+  
+<h1 class="text-4xl font-extrabold text-gray-900 mb-8 text-center sm:text-5xl !text-white">
+    Select a title
+</h1>
+
+<p class="text-lg text-gray-700 mb-12 text-center max-w-2xl !text-white">
+    Select a book below to begin reading.
+</p>
+
+    <div class="book-grid">
+        <!-- Book 1 -->
+        <a href="the-guardian.html" class="book-card">
+            <img src="https://placehold.co/120x120/AEC6CF/FFFFFF?text=Book+1" alt="Book 1 Cover" class="book-image">
+            <h2 class="book-title">The Guardian</h2>
+            <p class="book-description">A kaumātua tells his grandson about Te Pū o Te Wheke.</p>
+        </a>
+
+        <!-- Book 2 -->
+        <a href="kura-history.html" class="book-card">
+            <img src="https://placehold.co/120x120/FFD700/333333?text=Book+2" alt="Book 2 Cover" class="book-image">
+            <h2 class="book-title">Kura history</h2>
+            <p class="book-description">A collection of chapters from a Manurewa kura.</p>
+        </a>
+        
+                <!-- Book 3 -->
+        <a href="aorakis-canoe.html" class="book-card">
+            <img src="https://placehold.co/120x120/FFD700/333333?text=Book+3" alt="Book 3 Cover" class="book-image">
+            <h2 class="book-title">Aoraki's Canoe</h2>
+            <p class="book-description">Aoraki's Canoe is a significant Māori creation story about the formation of New Zealand's South Island.</p>
+        </a>
+        
+    </div>
+</body>
+</html>

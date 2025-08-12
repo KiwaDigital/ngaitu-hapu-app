@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CultureQ - Interactive Story Book app</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="selection:bg-indigo-300 selection:text-indigo-900">
+
+<!-- Mobile menu - SidebarMenu -->
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="admin.html">Publisher</a></li>
+    	</ul>
+        </div>
+  </div>
+  
+    <div class="book-container">
+        
+        <div class="language-selector-container">
+            <select id="languageSelector" class="language-selector">
+                <option value="en">English</option>
+            </select>
+        </div>
+
+        <div id="pageContent" class="page-content">
+            </div>
+
+    <button id="playStopBtn">
+        <img id="playStopIcon" src="images/play-icon.png" alt="Play Audio">
+    </button>
+    
+    <div id="audioPlayerContainer" class="audio-player-container">
+    <audio id="audioPlayer" class="audio-player" controls></audio>
+</div>
+    
+        <div class="navigation-controls">
+            <button id="prevBtn" class="navigation-button">
+                &#8592; </button>
+            <button id="nextBtn" class="navigation-button">
+                &#8594; </button>
+        </div>
+
+        <div id="pageInfo" class="page-info">
+            Page <span id="currentPageNum">1</span> of <span id="totalPagesNum"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>// Data for each page: image, text, and audio file paths for multiple languages
+const bookData = [
+    {
+        image: 'images/kaumatua/cover.jpg',
+        content: {
+            en: {
+                text: 'The Four Kaumātua’s',
+                audio: 'audio/kahurangi/cover-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/kaumatua/Page01.jpg',
+        content: {
+            en: {
+                text: 'There once were four brothers called Hawaiki, Elye, Tacks and Pererika of the Otatara Marae. Their father, Kaumātua Marcus, is about to pass away. He says ‘Boys, I want one of you to take my place on the Noho Whenua’',
+                audio: 'audio/kahurangi/Page01-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/kaumatua/Page02.jpg',
+        content: {
+            en: {
+                text: 'Tacks steps forward and says ‘I’ll do it Dad, I’ll be the Kaumātua’. Elye pushes Tacks and says ‘No! I’m the Kaumātua’. The boys start arguing. Kaumātua Marcus tries to tell the boys to stop, but they don’t hear him. They all leave and swear never to speak again.',
+                audio: 'audio/kahurangi/Page02-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/kaumatua/Page03.png',
+        content: {
+            en: {
+                text: 'A few years later, Hawaiki is visiting Marcus’s grave at the top of Whakatere motu. He suddenly sees a ship docking at Opononi Beach. There is a British flag waving from the mast.',
+                audio: 'audio/kahurangi/Page03-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/kaumatua/Page04.jpg',
+        content: {
+            en: {
+                text: 'Hawaiki runs back to Otatara Marae to warn the others. He yells ‘They are here to take our land!’ All the brothers come out of their Whare’s. Tacks says ‘Who are here?’ Hawaiki says ‘The British Governer is here!’ The boys stand in silence, thinking about what to do.',
+                audio: 'audio/kahurangi/Page04-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/kaumatua/Page05.jpg',
+        content: {
+            en: {
+                text: 'Pererika steps forward and says ‘We need to work together. We need to choose a kaumātua.’ Tacks says ‘I was wrong, I need to be there for my whānau.’ Hawaiki says ‘I am sorry for arguing. I’m scared. I can’t be kaumātua’. Elye says ‘Together we are stronger. We shouldn’t have left each other. I think Pererika should be kaumātua.’ The boys agree.',
+                audio: 'audio/kahurangi/Page05-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+        {
+        image: 'images/kaumatua/Page06.jpg',
+        content: {
+            en: {
+                text: 'Many many years later, when the boys have grown old with children and families of their own, Pererika’s time has come. As he lay in the wharenui, his sons start arguing over who will be kaumātua. Remembering what Pererika’s brothers said, he stops his sons and say’s ‘together, we are stronger. You should never leave each other. Work together.’ Pererika’s son’s stop arguing and work together to choose the next kaumātua.',
+                audio: 'audio/kahurangi/Page06-esv2-90p-bg-10p.wav'
+            }
+        }
+    }
+];
+</script>
+
+</body>
+</html>

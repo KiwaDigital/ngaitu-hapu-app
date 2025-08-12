@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CultureQ - Interactive Story Book app</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="selection:bg-indigo-300 selection:text-indigo-900">
+
+<!-- Mobile menu - SidebarMenu -->
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="admin.html">Publisher</a></li>
+    	</ul>
+        </div>
+  </div>
+  
+    <div class="book-container">
+        
+        <div class="language-selector-container">
+            <select id="languageSelector" class="language-selector">
+                <option value="en">English</option>
+            </select>
+        </div>
+
+        <div id="pageContent" class="page-content">
+            </div>
+
+    <button id="playStopBtn">
+        <img id="playStopIcon" src="images/play-icon.png" alt="Play Audio">
+    </button>
+    
+    <div id="audioPlayerContainer" class="audio-player-container">
+    <audio id="audioPlayer" class="audio-player" controls></audio>
+</div>
+    
+        <div class="navigation-controls">
+            <button id="prevBtn" class="navigation-button">
+                &#8592; </button>
+            <button id="nextBtn" class="navigation-button">
+                &#8594; </button>
+        </div>
+
+        <div id="pageInfo" class="page-info">
+            Page <span id="currentPageNum">1</span> of <span id="totalPagesNum"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>// Data for each page: image, text, and audio file paths for multiple languages
+const bookData = [
+    {
+        image: 'images/MNS0004_backplate_page01@2x.jpg',
+        content: {
+            en: {
+                text: 'One sunny day, a kaumātua and his grandson were walking on the beach. The grandson spotted a maunga that looks like a head of an Octopus.',
+                audio: 'audio/MNS0004_audio_page01.mp3'
+            }
+        }
+    },
+    {
+        image: 'images/MNS0004_backplate_page02@2x.jpg',
+        content: {
+            en: {
+                text: 'The kaumātua replied "Wow! that’s Te Pū o Te Wheke". The grandson replied "what’s a wheke grandad?". "It’s an octopus and he is the guardian of Rangaunu harbour" said Grandad.',
+                audio: 'audio/MNS0004_audio_page02.mp3'
+            }
+        }
+    },
+    {
+        image: 'images/MNS0004_backplate_page03@2x.jpg',
+        content: {
+            en: {
+                text: 'There is the funky flounder and speedy stingray that live in the harbour. There’s also the sneaky snapper and tricky trevally that live in the harbour.',
+                audio: 'audio/MNS0004_audio_page03.mp3'
+            }
+        }
+    },
+    {
+        image: 'images/MNS0004_backplate_page04@2x.jpg',
+        content: {
+            en: {
+                text: 'There’s also the sneaky snapper and a tricky trevally that live in Rangaunu harbour.',
+                audio: 'audio/MNS0004_audio_page04.mp3'
+            }
+        }
+    },
+    {
+        image: 'images/MNS0004_backplate_page05@2x.jpg',
+        content: {
+            en: {
+                text: 'The most special fish that lives in the harbour is the greenback turtle.',
+                audio: 'audio/MNS0004_audio_page05.mp3'
+            }
+        }
+    },
+    {
+        image: 'images/MNS0004_backplate_page06@2x.jpg',
+        content: {
+            en: {
+                text: 'Rangaunu harbour is the only place in Aotearoa that the seagrass grows. The greenback turtle can only survive by eating the seagrass.',
+                audio: 'audio/MNS0004_audio_page06.mp3'
+            }
+        }
+    },
+    {
+        image: 'images/MNS0004_backplate_page07@2x.jpg',
+        content: {
+            en: {
+                text: 'Legends say a waka tried to enter the Rangaunu harbour and the Guardian octopus would not let them through by blocking the entrance with his long tentacles.',
+                audio: 'audio/MNS0004_audio_page07.mp3'
+            }
+        }
+    },
+    {
+        image: 'images/MNS0004_backplate_page08@2x.jpg',
+        content: {
+            en: {
+                text: 'To this day, all the sea creatures still live in Rangaunu Harbour, protected by the Guardian Te Pū o Te Wheke.',
+                audio: 'audio/MNS0004_audio_page08.mp3'
+            }
+        }
+    }
+];
+</script>
+
+</body>
+</html>

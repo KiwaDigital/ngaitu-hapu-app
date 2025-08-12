@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CultureQ - Interactive Story Book app</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="selection:bg-indigo-300 selection:text-indigo-900">
+
+<!-- Mobile menu - SidebarMenu -->
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="admin.html">Publisher</a></li>
+    	</ul>
+        </div>
+  </div>
+  
+    <div class="book-container">
+        
+        <div class="language-selector-container">
+            <select id="languageSelector" class="language-selector">
+                <option value="en">English</option>
+            </select>
+        </div>
+
+        <div id="pageContent" class="page-content">
+            </div>
+
+    <button id="playStopBtn">
+        <img id="playStopIcon" src="images/play-icon.png" alt="Play Audio">
+    </button>
+    
+    <div id="audioPlayerContainer" class="audio-player-container">
+    <audio id="audioPlayer" class="audio-player" controls></audio>
+</div>
+    
+        <div class="navigation-controls">
+            <button id="prevBtn" class="navigation-button">
+                &#8592; </button>
+            <button id="nextBtn" class="navigation-button">
+                &#8594; </button>
+        </div>
+
+        <div id="pageInfo" class="page-info">
+            Page <span id="currentPageNum">1</span> of <span id="totalPagesNum"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>// Data for each page: image, text, and audio file paths for multiple languages
+const bookData = [
+    {
+        image: 'images/hunters/Page01.png',
+        content: {
+            en: {
+                text: 'Te Wheke and Kupe',
+                audio: 'audio/hunters/Page01-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/hunters/Page02.png',
+        content: {
+            en: {
+                text: 'One day, Kupe goes fishing for his village. He fishes for hours but is unable to catch anything.',
+                audio: 'audio/hunters/Page02-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/hunters/Page03.png',
+        content: {
+            en: {
+                text: 'He returns to the village with nothing and tells the villagers he couldn’t catch anything.',
+                audio: 'audio/hunters/Page03-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/hunters/Page04.png',
+        content: {
+            en: {
+                text: 'The next day, Kupe goes fishing again, and he gets a bite, but suddenly the fish disappears. This is how it had been for days.',
+                audio: 'audio/hunters/Page04-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/hunters/Page05.png',
+        content: {
+            en: {
+                text: 'He goes back to his village, and his wife finds octopus slime on the fishing hook. Te Wheke had been stealing Kupe’s bait fish.',
+                audio: 'audio/hunters/Page05-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/hunters/Page06.png',
+        content: {
+            en: {
+                text: 'He packs his stuff for his journey to find and kill Te Wheke o Muturangi.',
+                audio: 'audio/hunters/Page06-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/hunters/Page07.png',
+        content: {
+            en: {
+                text: 'He goes out to hunt Te Wheke, and Kupe starts to wonder how his wife figured out that it was Te Wheke’s slime. However, Kupe can’t think about that because Kupe spots Te Wheke.',
+                audio: 'audio/hunters/Page07-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+    {
+        image: 'images/hunters/Page08.png',
+        content: {
+            en: {
+                text: 'He chases Te Wheke. Kupe spots a ridge and corners Te Wheke.',
+                audio: 'audio/hunters/Page08-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+        {
+        image: 'images/hunters/Page09.png',
+        content: {
+            en: {
+                text: 'He gets Te Wheke in the corner of the ridge, but Te Wheke runs away.',
+                audio: 'audio/hunters/Page09-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+        {
+        image: 'images/hunters/Page10.png',
+        content: {
+            en: {
+                text: 'Te Wheke tries to grab the waka, but Kupe won’t allow it.',
+                audio: 'audio/hunters/Page10-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+        {
+        image: 'images/hunters/Page11.png',
+        content: {
+            en: {
+                text: 'Kupe grabs a spear and stabs him, but he can’t pull it out.',
+                   audio: 'audio/hunters/Page12-esv2-90p-bg-10p.wav'
+            }
+        },
+        backgroundMusic: 'audio/hunters/SFX1.wav' // 🎵 And another here
+    },
+        {
+        image: 'images/hunters/Page12.png',
+        content: {
+            en: {
+                text: 'Then Te Wheke runs away.',
+                audio: 'audio/hunters/Page11-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+        {
+        image: 'images/hunters/Page13.png',
+        content: {
+            en: {
+                text: 'And Kupe returns to his village and lives happily ever after.',
+                audio: 'audio/hunters/Page13-esv2-90p-bg-10p.wav'
+            }
+        }
+    },
+];
+</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Selection Menu</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<!-- Mobile menu - SidebarMenu -->
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="admin.html">Publisher</a></li>
+    	</ul>
+        </div>
+  </div>
+  
+<div class="galaxy-background">
+  
+<h1 class="text-4xl font-extrabold text-gray-900 mb-8 text-center sm:text-5xl !text-white" style="
+    padding-top: 100px;">
+    Select a title
+</h1>
+
+<p class="text-lg text-gray-700 mb-12 text-center !text-white">
+    Select a book below to begin reading.
+</p>
+
+    
+        <div class="book-grid">
+        <!-- Book 7 -->
+        <a href="hunters.html" class="book-card">
+            <img src="images/hunters/Page01.png" alt="Book 3 Cover" class="book-image">
+            <h2 class="book-title">Te Wheke and Kupe</h2>
+            <p class="book-description">Written by the Hunters group AKA Crazy Horses</p>
+        </a>
+        <!-- Book 4 -->
+        <a href="otaua-boyz.html" class="book-card">
+            <img src="images/noho/cover.png" alt="Book 1 Cover" class="book-image">
+            <h2 class="book-title">Noho Whenua</h2>
+            <p class="book-description">Written by the Otaua Boyz</p>
+        </a>
+
+        <!-- Book 5 -->
+        <a href="kahurangi.html" class="book-card">
+            <img src="images/kaumatua/cover.jpg" alt="Book 2 Cover" class="book-image">
+            <h2 class="book-title">The Four Kaumātua</h2>
+            <p class="book-description">Written by Kahurangi group</p>
+        </a>
+        
+        <!-- Book 6 -->
+        <a href="crafty-crew.html" class="book-card">
+            <img src="images/crafty-crew/cover.jpg" alt="Book 3 Cover" class="book-image">
+            <h2 class="book-title">The Missing Kids</h2>
+            <p class="book-description">Written by The Crafty Crew</p>
+        </a>
+
+        
+    </div>
+    
+    
+</body>
+</html>
